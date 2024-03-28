@@ -38,8 +38,8 @@
     "start-cli": "yarn workspace @cloud-carbon-footprint/cli-template start",
     "test": "lerna run test -- --coverage",
     "guided-install": "cd packages/cli && yarn guided-install",
-    "create-lookup-table": "yarn workspace @cloud-carbon-footprint/cli create-lookup-table",
-    "create-azure-lookup": "yarn workspace @cloud-carbon-footprint/cli create-azure-lookup",
-    "estimate-on-premise-data": "yarn workspace @cloud-carbon-footprint/cli estimate-on-premise-data"
+    "create-lookup-table": "yarn workspace @cloud-carbon-footprint/cli-template create-lookup-table",
+    "create-azure-lookup": "yarn workspace @cloud-carbon-footprint/cli-template create-azure-lookup",
+    "estimate-on-premise-data": "yarn workspace @cloud-carbon-footprint/cli-template estimate-on-premise-data"
   }
 }
