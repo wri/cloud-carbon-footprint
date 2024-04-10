@@ -46,12 +46,7 @@ if (process.env.REACT_APP_TEST_MODE === 'true') {
 }
 
 const appConfig: ClientConfig = {
-  CURRENT_PROVIDERS: [
-    { key: 'aws', name: 'AWS' },
-    { key: 'gcp', name: 'GCP' },
-    { key: 'azure', name: 'Azure' },
-    { key: 'alicloud', name: 'AliCloud' },
-  ],
+  CURRENT_PROVIDERS: [{ key: 'aws', name: 'AWS' }],
   PREVIOUS_YEAR_OF_USAGE: previousYearOfUsage,
   DATE_RANGE: {
     VALUE: process.env.REACT_APP_DATE_RANGE_VALUE || '12',

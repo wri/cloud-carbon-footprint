@@ -1,5 +1,28 @@
 # Cloud Carbon Footprint
 
+# Codespaces hacky setup
+## Setup onn first run
+0. aws cli is installed on boot via `.devcontainer/setup.sh`
+1. copy your aws creds with `code ~/.aws/credentials` (assumes old school IAM user)
+2. 
+`cp packages/api/.env.template packages/api/.env`
+`code packages/api/.env`
+3. 
+`cp packages/client/.env.template packages/client/.env`
+`code packages/client/.env`
+4. 
+```
+yarn install
+```
+
+## Run
+1. 
+```
+yarn start
+```
+2. Web UI will open in a new tab, but won't be working yet. You will have to wait until `Cloud Carbon Footprint Server listening at http://localhost:4000 `.
+3. If this is the first run, reading from Athena can take a while. This is done when...
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![CI](https://github.com/cloud-carbon-footprint/cloud-carbon-footprint/actions/workflows/ci.yml/badge.svg)
 [![codecov](https://codecov.io/gh/cloud-carbon-footprint/cloud-carbon-footprint/branch/trunk/graph/badge.svg)](https://codecov.io/gh/cloud-carbon-footprint/cloud-carbon-footprint)
