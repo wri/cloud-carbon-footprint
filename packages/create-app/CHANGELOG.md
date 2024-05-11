@@ -1,5 +1,11 @@
 # @cloud-carbon-footprint/create-app
 
+## 2.5.3
+
+### Patch Changes
+
+- d002768e: updates the cli scripts
+
 ## 2.5.2
 
 ### Patch Changes

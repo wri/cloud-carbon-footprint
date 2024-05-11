@@ -1,5 +1,11 @@
 # @cloud-carbon-footprint/client
 
+## 4.2.4
+
+### Patch Changes
+
+- e7718d06: bump for dockerfile changes
+
 ## 4.2.3
 
 ### Patch Changes
