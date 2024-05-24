@@ -136,7 +136,7 @@ jobs:
         run: zip dist-workspace.zip dist-workspace/* -r
       - uses: actions/upload-artifact@v4
         with:
-          name: dist-workspace-${{ matrix.node_version}}
+          name: dist-workspace-${{ matrix.node-version}}
           path: dist-workspace.zip
   release:
     needs: build
