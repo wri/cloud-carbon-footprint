@@ -38,12 +38,12 @@ module.exports = {
           position: 'left',
           className: 'navbar__link',
         },
-        // {
-        //   to: 'https://demo.cloudcarbonfootprint.org/',
-        //   label: 'Demo',
-        //   position: 'left',
-        //   className: 'navbar__link',
-        // },
+        {
+          to: 'https://demo.cloudcarbonfootprint.org/',
+          label: 'Demo',
+          position: 'left',
+          className: 'navbar__link',
+        },
         {
           to: 'blog',
           label: 'Blog',
