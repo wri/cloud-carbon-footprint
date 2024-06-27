@@ -16,7 +16,7 @@ function CallToActionBanner() {
           can do about it
         </p>
       </div>
-      <Link className="button__link" to="https://demo.cloudcarbonfootprint.org/">
+      {/* <Link className="button__link" to="https://demo.cloudcarbonfootprint.org/">
         <Button
           variant="outlined"
           classes={{ root: classes.paddingLow }}
@@ -26,7 +26,7 @@ function CallToActionBanner() {
         >
           TRY DEMO NOW
         </Button>
-      </Link>
+      </Link> */}
     </div>
   )
 }
