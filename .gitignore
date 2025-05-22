@@ -271,6 +271,8 @@ sketch
 #terraform
 terraform/.terraform/
 .terraform/
+terraform/.terraform/*
+.terraform/*
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
