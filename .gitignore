@@ -270,6 +270,13 @@ sketch
 
 #terraform
 terraform/.terraform/
+.terraform/
+terraform/.terraform/*
+.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform.lock.hcl
 
 #TestCafe
 screenshots

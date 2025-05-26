@@ -23,14 +23,14 @@ cp .env.template .env
 
 sed -i '23,48d' .env
 sed -i '17,18d' .env
-sed -i 's/your-target-account-role-name (e.g. ccf-app)/<YOUR-TARGET-ACCOUNT-ROLE-NAME>/g' .env
-sed -i 's/your-athena-db-name/<YOUR-ATHENA-DB-NAME>/g' .env
-sed -i 's/your-athena-db-table/<YOUR-ATHENA-DB-TABLE>/g' .env
-sed -i 's/your-athena-region/<YOUR-ATHENA-REGION>/g' .env
-sed -i 's/your-athena-query-results-location/<YOUR-ATHENA-RESULTS-S3-BUCKET-NAME>/g' .env
-sed -i 's/your-billing-account-id/<YOUR-AWS-ACCOUNT-ID>/g' .env
-sed -i 's/your-billing-account-name/<YOUR-AWS-ACCOUNT-NAME>/g' .env
-sed -i 's/=default/=IAM/g' .env
+sed -i "s|your-target-account-role-name (e.g. ccf-app)|${AWS_TARGET_ACCOUNT_ROLE_NAME}|g" .env
+sed -i "s|your-athena-db-name|${AWS_ATHENA_DB_NAME}|g" .env
+sed -i "s|your-athena-db-table|${AWS_ATHENA_DB_TABLE}|g" .env
+sed -i "s|your-athena-region|${AWS_ATHENA_REGION}|g" .env
+sed -i "s|your-athena-query-results-location|${AWS_ATHENA_QUERY_RESULT_LOCATION}|g" .env
+sed -i "s|your-billing-account-id|${AWS_BILLING_ACCOUNT_ID}|g" .env
+sed -i "s|your-billing-account-name|${AWS_BILLING_ACCOUNT_NAME}|g" .env
+sed -i "s|=default|=IAM|g" .env
 
 cd ../..
 
@@ -41,10 +41,10 @@ cp .env.template .env
 sed -i 's/REACT_APP_PREVIOUS_YEAR_OF_USAGE/#REACT_APP_PREVIOUS_YEAR_OF_USAGE/g' .env
 sed -i 's/=2/=12/g' .env
 
-cat <<EOF >> .env
-HOST=<YOUR HOST DOMAIN NAME>
-PORT=80
-EOF
+#cat <<EOF >> .env
+#HOST="${public_dns}"
+#PORT=80
+#EOF
 
 # Start CCF application (client and API)
 cd /home/ec2-user/cloud-carbon-footprint

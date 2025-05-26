@@ -7,9 +7,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "YOUR-TERRAFORM-STATE-BUCKET-NAME"
+    bucket = "tfstate-cloud-carbon-footprint"
     key    = "terraform.tfstate"
-    region = "YOUR-DEFAULT-AWS-REGION"
+    region = "us-east-1"
   }
 
   required_version = ">= 0.14.9"

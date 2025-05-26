@@ -11,5 +11,6 @@ locals {
     "Deployment"  = "terraform"
     "Environment" = var.environment
     "Name"        = local.name
+    "Project"     = "CloudCarbonFootprint"
   }
 }
