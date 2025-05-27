@@ -93,6 +93,11 @@ resource "aws_iam_role_policy_attachment" "glue" {
   role       = aws_iam_role.ccf_api_role.name
 }
 
+resource "aws_iam_role_policy_attachment" "ssm" {
+  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonSSMServiceRolePolicy"
+  role       = aws_iam_role.ccf_api_role.name
+}
+
 # role
 resource "aws_iam_role" "ccf_api_role" {
   assume_role_policy = data.aws_iam_policy_document.assume_role_policy.json
