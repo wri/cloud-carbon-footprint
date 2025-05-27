@@ -94,7 +94,7 @@ resource "aws_iam_role_policy_attachment" "glue" {
 }
 
 resource "aws_iam_role_policy_attachment" "ssm" {
-  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonSSMServiceRolePolicy"
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   role       = aws_iam_role.ccf_api_role.name
 }
 
