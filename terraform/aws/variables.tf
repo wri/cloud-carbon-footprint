@@ -15,7 +15,7 @@ variable "vpc_id" {
 
 variable "ami_id" {
   type    = string
-  default = "ami-0e58b56aa4d64231b" # Amazon Linux AMI 2 (64-bit (x86)) #
+  default = "ami-0953476d60561c955" # Amazon Linux 2023 (64-bit (x86)) #
 }
 
 variable "instance_type" {
@@ -64,5 +64,5 @@ variable "dns_name" {
 # This might be useful if you wanna restrict traffic to private subnets
 variable "allowed_cidr_blocks" {
   type    = list(string)
-  default = ["189.62.46.79/32"] # Anaue's public IP #
+  default = ["189.62.46.79/32","73.143.110.182/32"] # Anaue and Chris public IPs #
 }
