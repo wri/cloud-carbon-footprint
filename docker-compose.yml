@@ -9,14 +9,26 @@ services:
       - ./docker/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - api
+
   api:
     image: cloudcarbonfootprint/api:latest
-    env_file: /packages/api/.env
+    env_file: 
+      - ./packages/api/.env  # Relative path to env file (from compose file location)
     ports:
       - '4000:4000'
     volumes:
-      - $HOME/.aws/credentials:/root/.aws/credentials
-      - $HOME/.config/gcloud/service-account-keys.json:/root/.config/gcloud/service-account-keys.json
+      - $HOME/.aws/credentials:/root/.aws/credentials  # Mount AWS credentials
+      - $HOME/.config/gcloud/service-account-keys.json:/root/.config/gcloud/service-account-keys.json  # Mount GCP credentials
+      - ./packages/api:/app  # Mount project directory
     environment:
       - NODE_ENV=production
-
+    # Command that creates .env from template if missing
+    command: >
+      sh -c "
+      if [ ! -f /app/.env ]; then
+        echo 'Creating .env from template...';
+        cp /app/.env.template /app/.env;
+        echo 'Please edit /app/.env with your configuration before restarting';
+      fi;
+      node ./dist/server.js
+      "
