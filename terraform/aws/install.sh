@@ -41,10 +41,10 @@ cp .env.template .env
 sed -i 's/REACT_APP_PREVIOUS_YEAR_OF_USAGE/#REACT_APP_PREVIOUS_YEAR_OF_USAGE/g' .env
 sed -i 's/=2/=12/g' .env
 
-#cat <<EOF >> .env
-#HOST="${public_dns}"
-#PORT=80
-#EOF
+cat <<EOF >> .env
+HOST="ec2-52-20-89-43.compute-1.amazonaws.com"
+PORT=80
+EOF
 
 # Start CCF application (client and API)
 cd /home/ec2-user/cloud-carbon-footprint
