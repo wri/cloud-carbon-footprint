@@ -2,19 +2,19 @@
 
 # Install dependencies (git, node, yarn, jq)
 yum update -y
-yum install -y git
-curl --silent --location https://rpm.nodesource.com/setup_14.x | bash -
-yum install -y nodejs
+#yum install -y git
+#curl --silent --location https://rpm.nodesource.com/setup_14.x | bash -
+#yum install -y nodejs
 curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
 rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 yum install -y yarn
 yum install -y jq
 
 # Clone CCF repository and install dependencies
-su - ec2-user
-cd /home/ec2-user
-git clone https://github.com/cloud-carbon-footprint/cloud-carbon-footprint.git
-cd cloud-carbon-footprint/
+#su - ec2-user
+#cd /home/ec2-user
+#git clone https://github.com/cloud-carbon-footprint/cloud-carbon-footprint.git
+#cd cloud-carbon-footprint/
 yarn install
 
 # Set env variables for Node API
