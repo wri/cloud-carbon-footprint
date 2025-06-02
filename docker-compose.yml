@@ -11,12 +11,7 @@ services:
       - api
   api:
     image: cloudcarbonfootprint/api:latest
-    env_file: 
-      - ./packages/api/.env  # Relative path to env file (from compose file location)
     ports:
-      - '8080:8080'
+      - '4000:4000'
     volumes:
-      - $HOME/.aws/credentials:/root/.aws/credentials  # Mount AWS credentials
-      - ./packages/api:/app  # Mount project directory
-    environment:
-      - NODE_ENV=production
+      - $HOME/.aws/credentials:/root/.aws/credentials
