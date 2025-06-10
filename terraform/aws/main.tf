@@ -96,13 +96,13 @@ resource "aws_glue_catalog_table" "cur_table" {
   table_type = "EXTERNAL_TABLE"
 
   parameters = {
-    EXTERNAL              = "TRUE"
-    "projection.enabled"  = "true"
-    "storage.location.template" = "s3://wri-billing-reports/cost-and-usage/"
+    EXTERNAL                     = "TRUE"
+    "projection.enabled"         = "true"
+    "storage.location.template"  = "s3://wri-billing-reports/cost-and-usage/"
   }
 
   storage_descriptor {
-    location      = "s3://wri-billing-reports/ccost-and-usage/"
+    location      = "s3://wri-billing-reports/cost-and-usage/"
     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
 
@@ -111,15 +111,106 @@ resource "aws_glue_catalog_table" "cur_table" {
       serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
     }
 
-    # Define the columns according to the CUR schema #
+    columns {
+      name = "identity_line_item_id"
+      type = "string"
+    }
+    columns {
+      name = "identity_time_interval"
+      type = "string"
+    }
+    columns {
+      name = "bill_invoice_id"
+      type = "string"
+    }
+    columns {
+      name = "bill_invoicing_entity"
+      type = "string"
+    }
+    columns {
+      name = "bill_billing_entity"
+      type = "string"
+    }
+    columns {
+      name = "bill_bill_type"
+      type = "string"
+    }
+    columns {
+      name = "bill_payer_account_id"
+      type = "string"
+    }
+    columns {
+      name = "bill_billing_period_start_date"
+      type = "timestamp"
+    }
+    columns {
+      name = "bill_billing_period_end_date"
+      type = "timestamp"
+    }
     columns {
       name = "line_item_usage_account_id"
+      type = "string"
+    }
+    columns {
+      name = "line_item_line_item_type"
       type = "string"
     }
     columns {
       name = "line_item_usage_start_date"
       type = "timestamp"
     }
+    columns {
+      name = "line_item_usage_end_date"
+      type = "timestamp"
+    }
+    columns {
+      name = "line_item_product_code"
+      type = "string"
+    }
+    columns {
+      name = "line_item_usage_type"
+      type = "string"
+    }
+    columns {
+      name = "line_item_operation"
+      type = "string"
+    }
+    columns {
+      name = "line_item_availability_zone"
+      type = "string"
+    }
+    columns {
+      name = "line_item_resource_id"
+      type = "string"
+    }
+    columns {
+      name = "line_item_usage_amount"
+      type = "double"
+    }
+    columns {
+      name = "line_item_normalization_factor"
+      type = "double"
+    }
+    columns {
+      name = "pricing_unit"
+      type = "string"
+    }
+    columns {
+      name = "product_region"
+      type = "string"
+    }
+    columns {
+      name = "product_vcpu"
+      type = "double"
+    }
+    columns {
+      name = "line_item_blended_cost"
+      type = "double"
+    }
+
   }
+
   depends_on = [aws_glue_catalog_database.ccf_database]
 }
+
+
