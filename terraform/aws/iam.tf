@@ -6,8 +6,8 @@ data "aws_iam_policy_document" "assume_role_policy" {
     effect  = "Allow"
 
     principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      type        = "AWS"
+      identifiers = ["*"]
     }
   }
 }

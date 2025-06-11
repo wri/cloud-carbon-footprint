@@ -96,19 +96,26 @@ resource "aws_glue_catalog_table" "cur_table" {
   table_type = "EXTERNAL_TABLE"
 
   parameters = {
-    EXTERNAL                     = "TRUE"
+    "EXTERNAL"                    = "TRUE"
+    "skip.header.line.count"     = "1"
     "projection.enabled"         = "true"
     "storage.location.template"  = "s3://wri-billing-reports/cost-and-usage/"
   }
 
   storage_descriptor {
     location      = "s3://wri-billing-reports/cost-and-usage/"
-    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
-    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+    input_format  = "org.apache.hadoop.mapred.TextInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
+    compressed    = true
 
     ser_de_info {
-      name                  = "cur-serde"
-      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      name                  = "csv-serde"
+      serialization_library = "org.apache.hadoop.hive.serde2.OpenCSVSerde"
+      parameters = {
+        "separatorChar" = ","
+        "quoteChar"     = "\""
+        "escapeChar"    = "\\"
+      }
     }
 
     columns {
@@ -207,10 +214,7 @@ resource "aws_glue_catalog_table" "cur_table" {
       name = "line_item_blended_cost"
       type = "double"
     }
-
   }
 
   depends_on = [aws_glue_catalog_database.ccf_database]
 }
-
-
