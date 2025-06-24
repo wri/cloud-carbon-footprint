@@ -15,6 +15,18 @@
 yarn install
 ```
 
+# Local setup
+I got it to work by
+1. Check out my old codespace branch
+2. Make sure AWS CLI is installed and I have working creds in ~/.aws/credentials (assumes old school IAM user)
+3. Use my old .env files that I shared in Asana for packages/api/.env  and packages/client/.env
+4. yarn install
+5. yarn start-api 
+6. Test API with a search that I know has data... e.g. http://localhost:4000/api/footprint?start=2024-01-01&end=2024-01-31&ignoreCache=false&groupBy=month&limit=50000&skip=0 (if this returns empty results, you may have to wait and try again. The first time you connect to Athena it can take a few minutes to return a result)
+7. yarn start-client (in a new terminal, leaving the API running)
+
+NOTE: This stopped working (no data in client) for some reason after I tried switching to the `trunk` branch and then back, maybe related to the date ranges we have data for.
+
 ## Run
 1. 
 ```
