@@ -6,8 +6,8 @@ data "aws_iam_policy_document" "assume_role_policy" {
     effect  = "Allow"
 
     principals {
-      type        = "Service"
-      identifiers = ["ec2.amazonaws.com"]
+      type        = "AWS"
+      identifiers = ["*"]
     }
   }
 }
@@ -90,6 +90,11 @@ resource "aws_iam_role_policy_attachment" "ce" {
 
 resource "aws_iam_role_policy_attachment" "glue" {
   policy_arn = aws_iam_policy.glue.arn
+  role       = aws_iam_role.ccf_api_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "ssm" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
   role       = aws_iam_role.ccf_api_role.name
 }
 

@@ -1,21 +1,21 @@
 variable "terraform_state_bucket" {
   type    = string
-  default = "YOUR-TERRAFORM-STATE-BUCKET-NAME"
+  default = "tfstate-cloud-carbon-footprint"
 }
 
 variable "default_region" {
   type    = string
-  default = "YOUR-DEFAULT-AWS-REGION"
+  default = "us-east-1"
 }
 
 variable "vpc_id" {
   type    = string
-  default = "YOUR-VPC-ID"
+  default = "vpc-b8835cdd" # WRI Main VPC #
 }
 
 variable "ami_id" {
   type    = string
-  default = "ami-05cd35b907b4ffe77" # Amazon Linux AMI 2. This changes based on your AWS region.
+  default = "ami-05ffe3c48a9991133" # Amazon Linux 2023 (64-bit (x86)) #
 }
 
 variable "instance_type" {
@@ -25,19 +25,26 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "YOUR-KEY-PAIR"
+  default = "cloud-carbon-footprint-key-pair"
 }
 
 variable "private_subnet_id" {
   type    = string
-  default = "YOUR-PRIVATE-SUBNET-ID"
+  default = "subnet-b3427c9b" # Public Subnet us-east-1b #
 }
 
+variable "private_ip" {
+  type    = string
+  default = "172.30.1.156"
+}
+
+/*
 # If you have a security group that allows inbound traffic to connections coming from within a VPN
 variable "vpn_security_group_id" {
   type    = string
   default = "YOUR-VPN-SECURITY-GROUP-ID"
 }
+*/
 
 variable "application" {
   type    = string
@@ -57,5 +64,5 @@ variable "dns_name" {
 # This might be useful if you wanna restrict traffic to private subnets
 variable "allowed_cidr_blocks" {
   type    = list(string)
-  default = ["YOUR-ALLOWED-CIDR-BLOCK-1", "YOUR-ALLOWED-CIDR-BLOCK-2", "YOUR-ALLOWED-CIDR-BLOCK-3"]
+  default = ["189.62.46.79/32","73.143.110.182/32"] # Anaue and Chris public IPs #
 }

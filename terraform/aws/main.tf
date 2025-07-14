@@ -1,3 +1,4 @@
+/*
 resource "aws_s3_bucket" "ccf_terraform_state" {
   bucket = var.terraform_state_bucket
 }
@@ -19,7 +20,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "ccf_terraform_sta
     }
   }
 }
-
+*/
 
 resource "aws_security_group" "ccf_instance_sg" {
   name   = "ccf-instance-sg"
@@ -30,9 +31,6 @@ resource "aws_security_group" "ccf_instance_sg" {
     to_port     = 80
     protocol    = "tcp"
     cidr_blocks = var.allowed_cidr_blocks
-    security_groups = [
-      "${var.vpn_security_group_id}"
-    ]
   }
 
   ingress {
@@ -40,9 +38,6 @@ resource "aws_security_group" "ccf_instance_sg" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = var.allowed_cidr_blocks
-    security_groups = [
-      "${var.vpn_security_group_id}"
-    ]
   }
 
   egress {
@@ -69,7 +64,8 @@ module "ec2_instance" {
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.ccf_instance_sg.id]
   subnet_id              = var.private_subnet_id
-  user_data              = file("install.sh")
+  private_ip             = var.private_ip
+#  user_data              = file("install.sh")
   iam_instance_profile   = aws_iam_instance_profile.ccf_instance_profile.name
 
   tags = local.tags
