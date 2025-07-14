@@ -10,12 +10,12 @@ variable "default_region" {
 
 variable "vpc_id" {
   type    = string
-  default = "vpc-053248ab91d350dd6" # Default VPC #
+  default = "vpc-b8835cdd" # WRI Main VPC #
 }
 
 variable "ami_id" {
   type    = string
-  default = "ami-0953476d60561c955" # Amazon Linux 2023 (64-bit (x86)) #
+  default = "ami-05ffe3c48a9991133" # Amazon Linux 2023 (64-bit (x86)) #
 }
 
 variable "instance_type" {
@@ -30,12 +30,12 @@ variable "key_name" {
 
 variable "private_subnet_id" {
   type    = string
-  default = "subnet-0a07c535f1c34c91b" # Public Subnet us-east-1f #
+  default = "subnet-b3427c9b" # Public Subnet us-east-1b #
 }
 
 variable "private_ip" {
   type    = string
-  default = "172.30.5.129"
+  default = "172.30.1.156"
 }
 
 /*

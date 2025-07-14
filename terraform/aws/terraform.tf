@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "tfstate-cloud-carbon-footprint"
+    bucket = "tfstate-wri-cloud-carbon-footprint"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
